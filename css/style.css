@@ -1,55 +1,16 @@
-body{
-     background-color:yellow;
-     background-image:url("Images/immagine1.jpg");
-     background-repeat:no-repeat;
-     /*repeat-y*/
-     /*repeat-x*/
-     background-position: 60% -120%;
-     background-size: 130px 200px;
-     color: purple;
+/*** uncss> filename: css/style.css ***/
+
+.footer {
+  height: 40px;
+  background-color: black;
+  color: #D630FF;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+  clear: both;
 }
-h1{
-   background-color:white;
-   background-clip:content-box;
-   color:red;
-   border-style:solid;
-}
-h2{
-  background-color:red;
-  border-style:dotted;
-  border-color:white;
-  border-width:6px;
-  border-bottom-left-radius:6px;
-  padding:20px;
-}
-p{
-  background-color:blue;
-  letter-spacing:2px;
-}
-.testoblu{
-	color:white;
-	letter-spacing:4px;
-	padding:20px 40px;
-}
-.colorediff{
-	color:red;
-	background-color:green;
-}
-.pluto{
-	background-color:yellow;
-	border: 2px solid black;
-	padding-left:20px;
-	padding-top:10px;
-	padding-right:10px;
-	padding-bottom:80px;
-	margin-left:20px;
-	margin-top:40px;
-	/*ciao
-	*/
-}
-.box{
-	background-color:red;
-	width:400px;
-	height:400px;
-	border:4px dotted blue;
+
+.footer a:hover {
+  color: red;
 }
