@@ -2,6 +2,31 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        imagemin: {
+            jpg: {
+                options: {
+                    progressive: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'images/',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'dest/'
+                }]
+            }
+        },
+
+        less: {
+            development: {
+                options: {
+                    paths: ['less/']
+                },
+                files: {
+                    'css/style.css' : 'less/source.less'
+                }
+            }
+        },
+
         uncss: {
             dist: {
                 files: {
@@ -31,7 +56,7 @@ module.exports = function(grunt){
                 stripBanners: true,
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */',
             },
-            dist: {
+            dsourceist: {
                 src: ['js/script.js', 'js/script2.js'],
                 dest: 'js/script.min.js'
                 //dest: 'js/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -63,6 +88,9 @@ module.exports = function(grunt){
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-notify');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -70,4 +98,6 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.registerTask('default', ['uncss', 'cssmin']);
+
+    grunt.task.run('notify_hooks');
 };

@@ -1,16 +1,6 @@
 /*** uncss> filename: css/style.css ***/
 
-.footer {
-  height: 40px;
-  background-color: black;
-  color: #D630FF;
-  font-size: 14px;
-  text-align: center;
-  font-weight: bold;
-  padding: 5px;
-  clear: both;
-}
-
-.footer a:hover {
-  color: red;
+.box {
+  color: #fe33ac;
+  border-color: #fdcdea;
 }
