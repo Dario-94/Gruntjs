@@ -1,0 +1,18 @@
+{
+  "name": "Bower-Grunt test",
+  "description": "Bower-Grunt test",
+  "main": "",
+  "authors": [
+    "Dario-94 <dariogenoese@libero.it>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Dario-94/Gruntjs",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.3",
+    "angular": "^1.5.5",
+    "font-awesome": "fontawesome#^4.6.2",
+    "less": "^2.7.1",
+    "animate.css": "^3.5.1"
+  }
+}

@@ -2,11 +2,17 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        log: {
+        wiredep: {
+            target: {
+                src: 'index.html'
+            }
+        },
+
+        /*log: {
             foo: [1,2,3],
             bar: 'Hello World!!',
             baz: false,
-        },
+        },*/
 
         imagemin: {
             jpg: {
@@ -45,7 +51,9 @@ module.exports = function(grunt){
             sass: {
                 files: ['sass/*.scss'],
                 tasks: ['sass'],
-            }
+            },
+            files: ['bower_components/*'],
+            tasks: ['wiredep']
         },
 
         sass: {
@@ -94,6 +102,7 @@ module.exports = function(grunt){
         }
     });
 
+    grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-contrib-less');
@@ -103,11 +112,12 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    //grunt.registerTask('default', ['uncss', 'concat:dist', 'uglify']);
+    grunt.registerTask('changes', ['watch']);
+    grunt.registerTask('default', ['uncss', 'sass', 'uglify']);
 
     grunt.task.run('notify_hooks');
 
-    grunt.registerMultiTask('log', 'Log stuff.', function() {
+    /*grunt.registerMultiTask('log', 'Log stuff.', function() {
         grunt.log.writeln(this.target + ': ' + this.data);
     });
 
@@ -139,5 +149,5 @@ module.exports = function(grunt){
         }, 10000);
 
         grunt.log.error('This is an error message');
-    })
+    })*/
 };
