@@ -2,6 +2,12 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        log: {
+            foo: [1,2,3],
+            bar: 'Hello World!!',
+            baz: false,
+        },
+
         imagemin: {
             jpg: {
                 options: {
@@ -97,7 +103,41 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.registerTask('default', ['uncss', 'cssmin']);
+    //grunt.registerTask('default', ['uncss', 'concat:dist', 'uglify']);
 
     grunt.task.run('notify_hooks');
+
+    grunt.registerMultiTask('log', 'Log stuff.', function() {
+        grunt.log.writeln(this.target + ': ' + this.data);
+    });
+
+    grunt.registerTask('foo', 'Simple task!', function (arg1, arg2) {
+        if (arguments.length===0) {
+            grunt.log.writeln(this.name + ', no args');
+        } else {
+            grunt.log.writeln(this.name + '+ '+ arg1 + ' ' + arg2);
+        }
+    });
+
+    grunt.registerTask('default', 'My default task', function() {
+        grunt.log.writeln('Currently running the default task.');
+    })
+
+    grunt.registerTask('foo_me', 'My foo_me task!', function() {
+        grunt.task.run('bar', 'baz');
+
+        grunt.task.run(['bar', 'baz']);
+    });
+
+    grunt.registerTask('asyncfoo', 'My async task', function() {
+        var done = this.async();
+        grunt.log.writeln('Processing task...');
+
+        setTimeout(function() {
+            grunt.log.writeln('All done!');
+            done();
+        }, 10000);
+
+        grunt.log.error('This is an error message');
+    })
 };
